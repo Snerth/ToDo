@@ -1,0 +1,7 @@
+.app {
+    background-color: rgb(173, 116, 226);
+    border-radius: 10px;
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.801);
+}

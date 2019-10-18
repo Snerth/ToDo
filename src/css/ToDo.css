@@ -1,0 +1,21 @@
+.Icon {
+    width: 20px;
+    height: auto;
+}
+.toDo {
+    font-family: sans-serif;
+    background-color: rgb(235, 235, 235);
+    display: inline-block;
+    text-align: left;
+    padding: 5px;
+    width: 90%;
+    line-height: 25px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.377);
+    border-radius: 10px;
+}
+button {
+    border: none;    
+    background-color: transparent;
+    cursor: pointer;
+    float: right;
+}
