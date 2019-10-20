@@ -2,20 +2,25 @@ import React from 'react'
 import '../css/ToDo.css'
 import Edit from '../Edit.svg'
 import Remove from '../Remove.svg'
-import { UserConsumer } from '../utils/context'
+import { ToDoContext } from '../utils/context'
+import { valueToNode } from '@babel/types'
 
 class ToDo extends React.Component {
-    static contextType = UserConsumer
-    componentDidMount() {        
-        const existingTodos = JSON.parse(localStorage.todos).todos
- 
-
+  
+    static contextType = ToDoContext
+    componentDidMount() {           
+        const existingTodos = JSON.parse(localStorage.todos)
+        this.context.fetchTodos(existingTodos)
+    }
+    componentWillUnmount() {
+        let value = this.context.inputValue
+        console.log("i will unmount, todos: " + this.context.inputValue)
+        localStorage.setItem("inputValue", JSON.stringify(value))
     }
     render() {
-        
         return(                        
-            <>                
-                <UserConsumer>{ ({todos}) => {
+            <>   
+                <ToDoContext.Consumer>{ ({todos}) => {
                     return (
                         <div className="ToDo">
                             {todos.map((e, i) => { 
@@ -34,8 +39,23 @@ class ToDo extends React.Component {
                             
                         </div>
                     )}}
-                </UserConsumer>                   
-               
+                </ToDoContext.Consumer>    
+                {/* <div className="ToDo">
+                    {this.state.todos.map((e, i) => { 
+                        return (
+                            <p className="toDo">
+                                {e.title}
+                                <button>
+                                    <img className="Icon" src={Remove} alt="Remove ToDo"/>
+                                </button>
+                                <button>
+                                    <img className="Icon" src={Edit} alt="Edit ToDo"/>
+                                </button>
+                            </p>
+                        )
+                    })} 
+                            
+                </div> */}
             </>
           
         )

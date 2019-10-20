@@ -1,28 +1,27 @@
-import React, { createContext } from 'react';
+import React from 'react';
 
-const UserContext = createContext({
-  todos: [],
-  fetchTodos: () => {},
-});
+export const ToDoContext = React.createContext();
 
-export class UserProvider extends React.Component {
+export class ToDoProvider extends React.Component {
   fetchTodos = newTodos => {
-    this.setState({ todos: newTodos });
-  };
-
+    this.setState({ todos: newTodos })
+  }
+  handleInput = e => {
+    this.setState({ inputValue: e.target.value })
+  }
   state = {
     todos: [],
-    fetchTodos: this.fetchTodos
-}
-    
-
+    inputValue: "",
+    fetchTodos: this.fetchTodos,
+    handleInput: this.handleInput
+  }
   render() {
     return (
-      <UserContext.Provider value={this.state}>
+      <ToDoContext.Provider value={this.state}>
         {this.props.children}
-      </UserContext.Provider>
+      </ToDoContext.Provider>
     );
   }
 }
 
-export const UserConsumer = UserContext.Consumer;
+export const ToDoConsumer = ToDoContext.Consumer;
