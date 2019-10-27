@@ -5,10 +5,17 @@ import { ToDoContext } from '../utils/context'
 
 
 class Input extends React.Component {
+    componentDidMount() {
+        this.setInputFocus()
+    }
     static contextType = ToDoContext     
-
-    render() {   
-        console.log(this.context)
+    setInputFocus = () => {
+        this._input.focus()
+    }
+    clearInputValue = () => {
+        this._input.value = ''
+    }
+    render() {
         return(
             <>
             
@@ -21,10 +28,16 @@ class Input extends React.Component {
                     type="text" 
                     placeholder="Add ToDo..."
                     onChange={this.context.handleInput}
-
+                    ref = { input => this._input = input }
                 />
-                <button className="Add" >
-                     Add</button>
+                <button 
+                    className="Add"
+                    onClick={() => {
+                        this.clearInputValue()
+                        this.setInputFocus()
+                        this.context.addToDo()
+                    }}
+                >Add</button>
                 
             </div>
                 

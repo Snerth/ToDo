@@ -5,11 +5,13 @@ import { ToDoProvider } from '../utils/context'
 
 class TodoList extends Component {
     render() {
+        console.log("TodoList context:")
+        console.log(this.context)
         return(
             <div className="List">
-                <ToDoProvider>
+                
                     <ToDo />
-                </ToDoProvider>                
+                               
             </div>
         )
     }

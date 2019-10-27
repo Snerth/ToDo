@@ -8,8 +8,9 @@ function ToDoApp() {
     <div className="app">  
       <ToDoProvider>
         <Input />
-      </ToDoProvider>         
-      <TodoList />
+        <TodoList />
+      </ToDoProvider>       
+      
     </div>  
   );
 }
