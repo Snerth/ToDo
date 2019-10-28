@@ -1,8 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import '../css/Input.css'
 import { ToDoContext } from '../utils/context'
-
-
 
 class Input extends React.Component {
     componentDidMount() {
@@ -18,29 +16,23 @@ class Input extends React.Component {
     render() {
         return(
             <>
-            
-            
-            
-            <div className="Top">
-                
-                <input 
-                    className="Input" 
-                    type="text" 
-                    placeholder="Add ToDo..."
-                    onChange={this.context.handleInput}
-                    ref = { input => this._input = input }
-                />
-                <button 
-                    className="Add"
-                    onClick={() => {
-                        this.clearInputValue()
-                        this.setInputFocus()
-                        this.context.addToDo()
-                    }}
-                >Add</button>
-                
-            </div>
-                
+                <div className="Top">                    
+                    <input 
+                        className="Input" 
+                        type="text" 
+                        placeholder="Add ToDo..."
+                        onChange={this.context.handleInput}
+                        ref = { input => this._input = input }
+                    />
+                    <button 
+                        className="Add"
+                        onClick={() => {
+                            this.clearInputValue()
+                            this.setInputFocus()
+                            this.context.addToDo()
+                        }}
+                    >Add</button>                    
+                </div>                
             </>
         )
     }
