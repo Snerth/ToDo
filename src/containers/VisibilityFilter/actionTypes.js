@@ -1,0 +1,1 @@
+export const CHANGE_FILTER = 'VisibilityFilter/CHANGE_FILTER'

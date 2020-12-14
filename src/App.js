@@ -1,19 +1,22 @@
-import React from 'react';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
-import Info from './components/Info'
-import ToDoApp from './components/ToDoApp'
-import './css/Main.css'
+import React, { useState } from 'react'
+import Input from './components/Input'
+import AddButton from './components/AddButton'
+import ToDoList from './containers/ToDoList'
+import VisibilityFilter from './containers/VisibilityFilter'
+import AddImportance from './components/AddImportance'
 
 function App() {
+  const [inputText, setInputText] = useState('')
+  console.log(inputText)
   return (
-      <Router>
-        <Link to="Info-Components-Lifecycle" >
-          <p>Info</p>
-        </Link>     
-        <Route exact path="/"  component={ToDoApp} />
-        <Route path="/Info-Components-Lifecycle" component={Info} />
-      </Router>   
-  );
+    <>
+      <Input inputText={inputText} setInputText={setInputText} />
+      <AddImportance />
+      <AddButton />
+      <VisibilityFilter />
+      <ToDoList />
+    </>
+  )
 }
 
-export default App;
+export default App
