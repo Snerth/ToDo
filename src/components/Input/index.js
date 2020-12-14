@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { memo } from 'react'
 // import { edit } from '../../containers/ToDoList/actions'
 import './style.css'
 
-const Input = ({ inputText, setInputText }) =>
-    <input
+const Input = ({ inputText, setInputText }) => {
+    console.log('Input rendered')
+    return <input
         className="todo-input"
         type="text"
         placeholder="Add ToDo..."
@@ -11,8 +12,9 @@ const Input = ({ inputText, setInputText }) =>
         onChange={e => setInputText(e.target.value)}
     // ref={input => this._input = input}
     />
+}
 
-export default Input
+export default memo(Input)
 
 // class Input extends React.Component {
 //     componentDidMount() {

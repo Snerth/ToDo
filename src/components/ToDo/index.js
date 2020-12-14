@@ -1,13 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { cancel } from '../../containers/ToDoList/actions'
+import EditButton from '../EditButton'
+import EditInput from '../EditInput'
 import Importance from '../Importance'
+import RemoveButton from '../RemoveButton'
 import './style.css'
 
-const ToDo = ({todo}) => <li className='todo-container'>
-    <p className='todo-title'>{todo.title}</p>
-    <Importance importance={todo.importance}/>
-</li>
+const ToDo = ({ todo, cancel }) => {
+    const [newToDoTitle, setNewToDoTitle] = useState('')
+    return <li className='todo-container'>
+        {
+            todo.isEdited ? 
+            <div>
+            <EditInput newToDoTitle={newToDoTitle} setNewToDoTitle={setNewToDoTitle} />
+            <button onClick={() => cancel(todo.id)}>Cancel</button>
+            </div>
+             : 
+             <p className='todo-title'>{todo.title}</p>
+        }
+        <Importance importance={todo.importance} />
+        <EditButton id={todo.id} />
+        <RemoveButton id={todo.id} />
+    </li>
+}
 
-export default ToDo
+const mapDispatchToProps = {
+    cancel
+}
+
+export default connect(null, mapDispatchToProps)(ToDo)
 
 // import Edit from '../Edit.svg'
 // import Remove from '../Remove.svg'
@@ -88,16 +110,16 @@ export default ToDo
 //         localStorage.setItem("todos", existingTodos)
 //     }
 //     // handleMouseOverRemove = () => {
-        
+
 //     // }
 //     // handleMouseOutRemove = () => {
-        
+
 //     // }
 //     // handleMouseOverEdit = () => {
-       
+
 //     // }
 //     // handleMouseOutEdit = () => {
-        
+
 //     // }
 //     editTodo = (id) => {
 //         this.setState({
@@ -108,7 +130,7 @@ export default ToDo
 //     hideInput = () => {
 //         this.setState({showEditInput: false})
 //     }
-      
+
 //     render() {
 //         return(                        
 //             <>   
@@ -152,12 +174,12 @@ export default ToDo
 //                                     </p>
 //                                 )
 //                             })} 
-                            
+
 //                         </div>
 //                     )}}
 //                 </ToDoContext.Consumer>    
 //             </>
-          
+
 //         )
 //     }
 

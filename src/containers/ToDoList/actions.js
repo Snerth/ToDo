@@ -15,9 +15,9 @@ export const edit = (id) => ({
     payload: id
 })
 
-export const save = (id, todo) => ({
+export const save = (id, title) => ({
     type: t.SAVE,
-    payload: {id, todo}
+    payload: {id, title}
 })
 
 export const cancel = (id) => ({

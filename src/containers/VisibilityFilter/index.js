@@ -1,9 +1,15 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { changeVisibilityFilter } from './actions'
 
-const VisibilityFilter = () => <div>
-    <button>All</button>
-    <button>Active</button>
-    <button>Completed</button>
+const VisibilityFilter = ({ changeVisibilityFilter }) => <div>
+    <button onClick={() => changeVisibilityFilter('VisibilityFilter/SHOW_ALL')} >All</button>
+    <button onClick={() => changeVisibilityFilter('VisibilityFilter/SHOW_ACTIVE')} >Active</button>
+    <button onClick={() => changeVisibilityFilter('VisibilityFilter/SHOW_COMPLETED')} >Completed</button>
 </div>
 
-export default VisibilityFilter
+const mapDispatchToProps = {
+    changeVisibilityFilter
+}
+
+export default connect(null, mapDispatchToProps)(VisibilityFilter)

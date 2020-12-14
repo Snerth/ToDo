@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@welldone-software/why-did-you-render": "^6.0.3",
     "bootstrap": "^4.5.3",
     "normalize.css": "^8.0.1",
     "react": "^16.10.2",
