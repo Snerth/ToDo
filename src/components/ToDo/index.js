@@ -1,35 +1,31 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import { cancel } from '../../containers/ToDoList/actions'
+import React from 'react'
+import CompleteButton from '../CompleteButton'
 import EditButton from '../EditButton'
 import EditInput from '../EditInput'
 import Importance from '../Importance'
 import RemoveButton from '../RemoveButton'
 import './style.css'
 
-const ToDo = ({ todo, cancel }) => {
-    const [newToDoTitle, setNewToDoTitle] = useState('')
-    return <li className='todo-container'>
+const ToDoComponent = ({ todo, cancel, complete, save, newToDoTitle, setNewToDoTitle }) => {
+    return <li className='todo'>
         {
-            todo.isEdited ? 
-            <div>
-            <EditInput newToDoTitle={newToDoTitle} setNewToDoTitle={setNewToDoTitle} />
-            <button onClick={() => cancel(todo.id)}>Cancel</button>
-            </div>
-             : 
-             <p className='todo-title'>{todo.title}</p>
+            todo.isEdited ?
+                <div>
+                    <EditInput newToDoTitle={newToDoTitle} setNewToDoTitle={setNewToDoTitle} />
+                    <button onClick={() => cancel(todo.id)} >Cancel</button>
+                    <button onClick={() => save(todo.id, newToDoTitle)} >Save</button>
+                </div>
+                :
+                <p className='todo-title'>{todo.title}</p>
         }
         <Importance importance={todo.importance} />
         <EditButton id={todo.id} />
         <RemoveButton id={todo.id} />
+        <CompleteButton todoId={todo.id} handleClick={complete} />
     </li>
 }
 
-const mapDispatchToProps = {
-    cancel
-}
-
-export default connect(null, mapDispatchToProps)(ToDo)
+export default ToDoComponent
 
 // import Edit from '../Edit.svg'
 // import Remove from '../Remove.svg'

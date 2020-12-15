@@ -5,7 +5,7 @@ const EditInput = ({ newToDoTitle, setNewToDoTitle }) => {
         type='text'
         placeholder='Edit ToDo...'
         value={newToDoTitle}
-        onChange={setNewToDoTitle}
+        onChange={(e) => setNewToDoTitle(e.target.value)}
     />
 }
 

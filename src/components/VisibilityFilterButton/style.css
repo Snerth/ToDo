@@ -1,0 +1,12 @@
+.visibility-filter-button {
+    border: 1px solid turquoise;
+    background: rgb(102, 240, 226);
+}
+
+.visibility-filter-button:focus {
+    outline: none;
+}
+
+.active {
+    border: 1px solid red;
+}
